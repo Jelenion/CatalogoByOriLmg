@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verificar Productos - By OriLmg</title>
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            margin: 20px; 
+            background: #f5f5f5;
+        }
+        .header {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        .stat-card {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .stat-number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #667eea;
+        }
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        .product-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+        .product-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        .product-info {
+            padding: 15px;
+        }
+        .product-name {
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #2c3e50;
+        }
+        .product-code {
+            color: #667eea;
+            font-size: 0.9rem;
+            margin-bottom: 5px;
+        }
+        .product-category {
+            color: #7f8c8d;
+            font-size: 0.8rem;
+            margin-bottom: 5px;
+        }
+        .product-price {
+            color: #ff4757;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+        .category-filter {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .filter-btn {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 5px;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        .filter-btn:hover {
+            background: #5a6fd8;
+        }
+        .filter-btn.active {
+            background: #ff4757;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🔍 Verificación de Productos - By OriLmg</h1>
+        <p>Verificando que todos los 52 zapatos se cargan correctamente</p>
+    </div>
+
+    <div class="stats" id="stats">
+        <!-- Las estadísticas se cargarán dinámicamente -->
+    </div>
+
+    <div class="category-filter">
+        <button class="filter-btn active" data-filter="all">Todos (52)</button>
+        <button class="filter-btn" data-filter="PADEL">PADEL</button>
+        <button class="filter-btn" data-filter="BASKET">BASKET</button>
+        <button class="filter-btn" data-filter="TRAINNING">TRAINNING</button>
+    </div>
+
+    <div class="products-grid" id="productsGrid">
+        <!-- Los productos se cargarán dinámicamente -->
+    </div>
+    
+    <script>
+        // Protección - redirigir inmediatamente a 404
+        window.location.href = '404.html';
+    </script>
+    <script>
+        // Datos de la aplicación
+        let products = [];
+        let categories = ['PADEL', 'BASKET', 'TRAINNING'];
+
+        // Estructura de carpetas y precios con nombres únicos
+const folderStructure = {
+    '001 - PADEL - Tennis caballero': { category: 'PADEL', gender: 'caballero', model: 'Ace Pro Elite', price: 85 },
+    '002 - PADEL - Tennis dama 1er modelo': { category: 'PADEL', gender: 'dama', model: 'Smash Elite Pro', price: 85 },
+    '003 - PADEL - Tennis dama 2do modelo': { category: 'PADEL', gender: 'dama', model: 'Court Queen Supreme', price: 70 },
+    '004 -  BASKET - caballeros': { category: 'BASKET', gender: 'caballero', model: 'Dunk Master Pro', price: 95 },
+    '005 - TRAINNING - Damas 1er modelo': { category: 'TRAINNING', gender: 'dama', model: 'Fit Flow Active', price: 70 },
+    '006 - TRAINNING - Damas 2do modelo': { category: 'TRAINNING', gender: 'dama', model: 'Power Step Plus', price: 70 },
+    '007 - TRAINNING - Damas 3er modelo': { category: 'TRAINNING', gender: 'dama', model: 'Energy Boost Max', price: 89 },
+    '008 - TRAINNING - Caballero 1er modelo': { category: 'TRAINNING', gender: 'caballero', model: 'Force Flex Ultra', price: 75 },
+    '009 - TRAINNING - Caballero 2do modelo': { category: 'TRAINNING', gender: 'caballero', model: 'Power Max Elite', price: 85 },
+    '010 - TRAINNING - Caballero 3er modelo': { category: 'TRAINNING', gender: 'caballero', model: 'Endurance Pro Plus', price: 75 }
+};
+
+        // Obtener número de imágenes por carpeta
+        function getImageCountForFolder(folderName) {
+            const counts = {
+                '001 - PADEL - Tennis caballero': 7,        // 000001-000007
+                '002 - PADEL - Tennis dama 1er modelo': 7,   // 000008-000014
+                '003 - PADEL - Tennis dama 2do modelo': 8,   // 000015-000022
+                '004 -  BASKET - caballeros': 7,             // 000023-000029
+                '005 - TRAINNING - Damas 1er modelo': 4,     // 000030-000033
+                '006 - TRAINNING - Damas 2do modelo': 4,     // 000034-000037
+                '007 - TRAINNING - Damas 3er modelo': 3,     // 000038-000040
+                '008 - TRAINNING - Caballero 1er modelo': 4, // 000041-000044
+                '009 - TRAINNING - Caballero 2do modelo': 4, // 000045-000048
+                '010 - TRAINNING - Caballero 3er modelo': 4  // 000049-000052
+            };
+            return counts[folderName] || 1;
+        }
+
+        // Cargar productos
+        function loadProducts() {
+            products = [];
+            let totalProducts = 0;
+            
+            Object.keys(folderStructure).forEach(folderName => {
+                const folderInfo = folderStructure[folderName];
+                const folderPath = `src/img/shoes/${folderName}`;
+                
+                const imageCount = getImageCountForFolder(folderName);
+                
+                for (let i = 1; i <= imageCount; i++) {
+                    let imageName;
+                    if (folderName.includes('001')) {
+                        imageName = `${String(i).padStart(6, '0')}.jpg`;
+                    } else if (folderName.includes('002')) {
+                        imageName = `${String(i + 7).padStart(6, '0')}.jpg`;
+                    } else if (folderName.includes('003')) {
+                        imageName = `${String(i + 14).padStart(6, '0')}.jpg`;
+                    } else if (folderName.includes('004')) {
+                        imageName = `${String(i + 21).padStart(6, '0')}.jpg`;
+                    } else if (folderName.includes('005')) {
+                        imageName = `${String(i + 28).padStart(6, '0')}.jpg`;
+                    } else if (folderName.includes('006')) {
+                        imageName = `${String(i + 32).padStart(6, '0')}.jpg`;
+                    } else if (folderName.includes('007')) {
+                        imageName = `${String(i + 36).padStart(6, '0')}.jpg`;
+                    } else if (folderName.includes('008')) {
+                        imageName = `${String(i + 39).padStart(6, '0')}.jpg`;
+                    } else if (folderName.includes('009')) {
+                        imageName = `${String(i + 43).padStart(6, '0')}.jpg`;
+                    } else if (folderName.includes('010')) {
+                        imageName = `${String(i + 47).padStart(6, '0')}.jpg`;
+                    }
+                    
+                    const productCode = folderName.split(' - ')[0];
+                    
+                    products.push({
+                        id: `${productCode}-${i}`,
+                        name: `${folderInfo.model} ${folderInfo.gender === 'caballero' ? 'Caballero' : 'Dama'}`,
+                        category: folderInfo.category,
+                        gender: folderInfo.gender,
+                        price: folderInfo.price,
+                        image: `${folderPath}/${imageName}`,
+                        imageCode: imageName.replace('.jpg', ''),
+                        folder: folderName
+                    });
+                    
+                    totalProducts++;
+                }
+            });
+            
+            return totalProducts;
+        }
+
+        // Mostrar estadísticas
+        function showStats() {
+            const stats = document.getElementById('stats');
+            const categoryCount = {};
+            products.forEach(product => {
+                categoryCount[product.category] = (categoryCount[product.category] || 0) + 1;
+            });
+
+            stats.innerHTML = `
+                <div class="stat-card">
+                    <div class="stat-number">${products.length}</div>
+                    <div>Total Productos</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">${categoryCount.PADEL || 0}</div>
+                    <div>PADEL</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">${categoryCount.BASKET || 0}</div>
+                    <div>BASKET</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">${categoryCount.TRAINNING || 0}</div>
+                    <div>TRAINNING</div>
+                </div>
+            `;
+        }
+
+        // Mostrar productos
+        function showProducts(filter = 'all') {
+            const productsGrid = document.getElementById('productsGrid');
+            let filteredProducts = products;
+            
+            if (filter !== 'all') {
+                filteredProducts = products.filter(product => product.category === filter);
+            }
+            
+            productsGrid.innerHTML = filteredProducts.map(product => `
+                <div class="product-card">
+                    <img src="${product.image}" alt="${product.name}" class="product-image" 
+                         onerror="this.src='public/placeholder.jpg'">
+                    <div class="product-info">
+                        <div class="product-name">${product.name}</div>
+                        <div class="product-code">Código: ${product.imageCode}</div>
+                        <div class="product-category">${product.category} - ${product.gender}</div>
+                        <div class="product-price">$${product.price}</div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Configurar filtros
+        function setupFilters() {
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    filterBtns.forEach(b => b.classList.remove('active'));
+                    e.target.classList.add('active');
+                    const filter = e.target.dataset.filter;
+                    showProducts(filter);
+                });
+            });
+        }
+
+        // Inicializar
+        document.addEventListener('DOMContentLoaded', function() {
+            const totalProducts = loadProducts();
+            console.log(`✅ Total de productos cargados: ${totalProducts}/52`);
+            
+            showStats();
+            showProducts();
+            setupFilters();
+        });
+    </script>
+</body>
+</html> 

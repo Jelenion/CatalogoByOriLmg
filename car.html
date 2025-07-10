@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrito - By OriLmg</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">
+                    <h1 class="logo-text">By OriLmg</h1>
+                </a>
+            </div>
+            <nav class="nav">
+                <button class="back-btn" onclick="window.location.href='index.html'">
+                    <i class="fas fa-arrow-left"></i> Volver
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Cart Section -->
+    <section class="cart-section">
+        <div class="container">
+            <h1 class="cart-title">Tu Carrito</h1>
+            
+            <div class="cart-content">
+                <div class="cart-items" id="cartItems">
+                    <!-- Los items del carrito se cargarán dinámicamente -->
+                </div>
+                
+                <div class="cart-summary">
+                    <h3>Resumen del Pedido</h3>
+                    <div class="summary-item total">
+                        <span>Total:</span>
+                        <span id="total">$0</span>
+                    </div>
+                    <button class="checkout-btn" onclick="sendCartToWhatsApp()">
+                        <i class="fab fa-whatsapp"></i>
+                        Enviar Carrito
+                    </button>
+                    <!-- Botón de vaciar carrito oculto - solo para administrador -->
+                    <button class="clear-cart-btn" onclick="clearCart()" style="display: none;">
+                        <i class="fas fa-trash"></i>
+                        Vaciar Carrito
+                    </button>
+                </div>
+            </div>
+            
+            <div id="emptyCart" class="empty-cart" style="display: none;">
+                <i class="fas fa-shopping-cart"></i>
+                <h3>Tu carrito está vacío</h3>
+                <p>¡Agrega algunos productos para comenzar!</p>
+                <button class="cta-btn" onclick="window.location.href='index.html'">
+                    Ir a Productos
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Jesus Merlin. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Protección de páginas - solo permitir acceso a páginas principales
+        const allowedPages = ['index.html', 'category.html', 'car.html', ''];
+        const currentPage = window.location.pathname.split('/').pop();
+        
+        if (!allowedPages.includes(currentPage)) {
+            window.location.href = '404.html';
+        }
+    </script>
+</body>
+</html> 

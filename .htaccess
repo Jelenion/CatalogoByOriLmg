@@ -1,0 +1,74 @@
+# Protección de páginas de test y verificación
+# Redirigir todas las páginas de test a 404.html
+
+# Bloquear acceso directo a páginas de test
+<Files "test-cart.html">
+    Redirect 404 /404.html
+</Files>
+
+<Files "test-images.html">
+    Redirect 404 /404.html
+</Files>
+
+<Files "test-all-products.html">
+    Redirect 404 /404.html
+</Files>
+
+<Files "verify-products.html">
+    Redirect 404 /404.html
+</Files>
+
+<Files "diagnose-images.html">
+    Redirect 404 /404.html
+</Files>
+
+# Bloquear acceso a archivos de configuración
+<Files "generate-shoes-images.js">
+    Order allow,deny
+    Deny from all
+</Files>
+
+<Files "shoes-images.json">
+    Order allow,deny
+    Deny from all
+</Files>
+
+# Configuración de seguridad adicional
+<IfModule mod_headers.c>
+    # Prevenir clickjacking
+    Header always append X-Frame-Options SAMEORIGIN
+    
+    # Prevenir MIME type sniffing
+    Header always set X-Content-Type-Options nosniff
+    
+    # Habilitar XSS protection
+    Header always set X-XSS-Protection "1; mode=block"
+    
+    # Referrer Policy
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>
+
+# Configuración de caché para archivos estáticos
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresByType text/css "access plus 1 month"
+    ExpiresByType application/javascript "access plus 1 month"
+    ExpiresByType image/png "access plus 1 year"
+    ExpiresByType image/jpg "access plus 1 year"
+    ExpiresByType image/jpeg "access plus 1 year"
+    ExpiresByType image/gif "access plus 1 year"
+    ExpiresByType image/svg+xml "access plus 1 year"
+</IfModule>
+
+# Compresión GZIP
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/plain
+    AddOutputFilterByType DEFLATE text/html
+    AddOutputFilterByType DEFLATE text/xml
+    AddOutputFilterByType DEFLATE text/css
+    AddOutputFilterByType DEFLATE application/xml
+    AddOutputFilterByType DEFLATE application/xhtml+xml
+    AddOutputFilterByType DEFLATE application/rss+xml
+    AddOutputFilterByType DEFLATE application/javascript
+    AddOutputFilterByType DEFLATE application/x-javascript
+</IfModule> 

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Images - By OriLmg</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .image-test { margin: 10px; padding: 10px; border: 1px solid #ccc; }
+        .image-test img { max-width: 200px; max-height: 200px; }
+        .success { background: #d4edda; }
+        .error { background: #f8d7da; }
+    </style>
+</head>
+<body>
+    <h1>Test de Carga de Imágenes</h1>
+    <div id="results"></div>
+    
+    <script>
+        // Protección - redirigir inmediatamente a 404
+        window.location.href = '404.html';
+    </script>
+    <script>
+        // Estructura de carpetas y precios con nombres únicos
+const folderStructure = {
+    '001 - PADEL - Tennis caballero': { category: 'PADEL', gender: 'caballero', model: 'Ace Pro Elite', price: 85 },
+    '002 - PADEL - Tennis dama 1er modelo': { category: 'PADEL', gender: 'dama', model: 'Smash Elite Pro', price: 85 },
+    '003 - PADEL - Tennis dama 2do modelo': { category: 'PADEL', gender: 'dama', model: 'Court Queen Supreme', price: 70 },
+    '004 -  BASKET - caballeros': { category: 'BASKET', gender: 'caballero', model: 'Dunk Master Pro', price: 95 },
+    '005 - TRAINNING - Damas 1er modelo': { category: 'TRAINNING', gender: 'dama', model: 'Fit Flow Active', price: 70 },
+    '006 - TRAINNING - Damas 2do modelo': { category: 'TRAINNING', gender: 'dama', model: 'Power Step Plus', price: 70 },
+    '007 - TRAINNING - Damas 3er modelo': { category: 'TRAINNING', gender: 'dama', model: 'Energy Boost Max', price: 89 },
+    '008 - TRAINNING - Caballero 1er modelo': { category: 'TRAINNING', gender: 'caballero', model: 'Force Flex Ultra', price: 75 },
+    '009 - TRAINNING - Caballero 2do modelo': { category: 'TRAINNING', gender: 'caballero', model: 'Power Max Elite', price: 85 },
+    '010 - TRAINNING - Caballero 3er modelo': { category: 'TRAINNING', gender: 'caballero', model: 'Endurance Pro Plus', price: 75 }
+};
+
+        // Obtener número de imágenes por carpeta
+        function getImageCountForFolder(folderName) {
+            const counts = {
+                '001 - PADEL - Tennis caballero': 7,        // 000001-000007
+                '002 - PADEL - Tennis dama 1er modelo': 7,   // 000008-000014
+                '003 - PADEL - Tennis dama 2do modelo': 8,   // 000015-000022
+                '004 -  BASKET - caballeros': 7,             // 000023-000029
+                '005 - TRAINNING - Damas 1er modelo': 4,     // 000030-000033
+                '006 - TRAINNING - Damas 2do modelo': 4,     // 000034-000037
+                '007 - TRAINNING - Damas 3er modelo': 3,     // 000038-000040
+                '008 - TRAINNING - Caballero 1er modelo': 4, // 000041-000044
+                '009 - TRAINNING - Caballero 2do modelo': 4, // 000045-000048
+                '010 - TRAINNING - Caballero 3er modelo': 4  // 000049-000052
+            };
+            return counts[folderName] || 1;
+        }
+
+        // Generar productos y probar imágenes
+        function testImages() {
+            const results = document.getElementById('results');
+            let successCount = 0;
+            let errorCount = 0;
+
+            Object.keys(folderStructure).forEach(folderName => {
+                const folderInfo = folderStructure[folderName];
+                const folderPath = `src/img/shoes/${folderName}`;
+                const imageCount = getImageCountForFolder(folderName);
+
+                for (let i = 1; i <= imageCount; i++) {
+                    // Generar nombre de imagen correcto basado en el índice
+                    let imageName;
+                    if (folderName.includes('001')) {
+                        imageName = `${String(i).padStart(6, '0')}.jpg`;
+                    } else if (folderName.includes('002')) {
+                        imageName = `${String(i + 7).padStart(6, '0')}.jpg`;
+                    } else if (folderName.includes('003')) {
+                        imageName = `${String(i + 14).padStart(6, '0')}.jpg`;
+                    } else if (folderName.includes('004')) {
+                        imageName = `${String(i + 21).padStart(6, '0')}.jpg`;
+                    } else if (folderName.includes('005')) {
+                        imageName = `${String(i + 28).padStart(6, '0')}.jpg`;
+                    } else if (folderName.includes('006')) {
+                        imageName = `${String(i + 32).padStart(6, '0')}.jpg`;
+                    } else if (folderName.includes('007')) {
+                        imageName = `${String(i + 36).padStart(6, '0')}.jpg`;
+                    } else if (folderName.includes('008')) {
+                        imageName = `${String(i + 39).padStart(6, '0')}.jpg`;
+                    } else if (folderName.includes('009')) {
+                        imageName = `${String(i + 43).padStart(6, '0')}.jpg`;
+                    } else if (folderName.includes('010')) {
+                        imageName = `${String(i + 47).padStart(6, '0')}.jpg`;
+                    }
+
+                    const imagePath = `${folderPath}/${imageName}`;
+                    const div = document.createElement('div');
+                    div.className = 'image-test';
+                    div.innerHTML = `
+                        <h3>${folderName} - Imagen ${i}</h3>
+                        <p>Ruta: ${imagePath}</p>
+                        <img src="${imagePath}" alt="Test" onload="this.parentElement.classList.add('success'); successCount++; updateCounts();" onerror="this.parentElement.classList.add('error'); errorCount++; updateCounts();">
+                    `;
+                    results.appendChild(div);
+                }
+            });
+
+            function updateCounts() {
+                const summary = document.createElement('div');
+                summary.innerHTML = `
+                    <h2>Resumen:</h2>
+                    <p>✅ Exitosas: ${successCount}</p>
+                    <p>❌ Errores: ${errorCount}</p>
+                `;
+                results.insertBefore(summary, results.firstChild);
+            }
+        }
+
+        // Ejecutar test
+        testImages();
+    </script>
+</body>
+</html> 

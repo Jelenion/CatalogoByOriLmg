@@ -1,0 +1,10 @@
+PADEL - Tennis - Caballero - 85$
+PADEL - Tennis - Dama 1er modelo - 85$
+PADEL - Tennis - Dama 2do modelo - 70$
+BASKET - Caballeros - 95$
+TRAINNING - Damas 1er modelo - 70$
+TRAINNING - Damas 2do modelo - 70$
+TRAINNING - Damas 3er modelo - 89$
+TRAINNING - Caballero 1er modelo - 75$
+TRAINNING - Caballero 2do modelo - 85$
+TRAINNING - Caballero 3er modelo - 75$

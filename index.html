@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>By OriLmg - Zapatos Deportivos</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <h1 class="logo-text">By OriLmg</h1>
+            </div>
+            <nav class="nav">
+                <div class="search-container">
+                    <input type="text" id="searchInput" placeholder="Buscar categorías..." class="search-input">
+                    <div id="searchDropdown" class="search-dropdown"></div>
+                </div>
+                <button class="cart-btn" onclick="window.location.href='car.html'">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span id="cartCount" class="cart-count">0</span>
+                </button>
+
+                <button class="back-btn" onclick="window.location.href='diagnose-images.html'" style="margin-left: 10px; display: none;">
+                    <i class="fas fa-search"></i>
+                    Diagnóstico
+                </button>
+                <button class="back-btn" onclick="window.location.href='test-all-products.html'" style="margin-left: 10px; display: none;">
+                    <i class="fas fa-list"></i>
+                    Todos
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">Encuentra tu estilo deportivo</h1>
+                <p class="hero-subtitle">La mejor selección de zapatos para padel, basket y training</p>
+                <button class="cta-btn" onclick="scrollToProducts()">Ver Productos</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Products -->
+    <section class="featured-products" id="featuredProducts">
+        <div class="container">
+            <h2 class="section-title">Productos Destacados</h2>
+            <div class="products-grid" id="featuredGrid">
+                <!-- Los productos destacados se cargarán dinámicamente -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section class="categories">
+        <div class="container">
+            <h2 class="section-title">Nuestras Categorías</h2>
+            <div class="categories-grid">
+                <div class="category-card" onclick="goToCategory('PADEL')">
+                    <div class="category-icon">
+                        <i class="fas fa-table-tennis"></i>
+                    </div>
+                    <h3>PADEL</h3>
+                    <p>Zapatos especializados para padel</p>
+                </div>
+                <div class="category-card" onclick="goToCategory('BASKET')">
+                    <div class="category-icon">
+                        <i class="fas fa-basketball-ball"></i>
+                    </div>
+                    <h3>BASKET</h3>
+                    <p>Zapatos para baloncesto</p>
+                </div>
+                <div class="category-card" onclick="goToCategory('TRAINNING')">
+                    <div class="category-icon">
+                        <i class="fas fa-dumbbell"></i>
+                    </div>
+                    <h3>TRAINNING</h3>
+                    <p>Zapatos para entrenamiento</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Jesus Merlin. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Protección de páginas - solo permitir acceso a páginas principales
+        const allowedPages = ['index.html', 'category.html', 'car.html', ''];
+        const currentPage = window.location.pathname.split('/').pop();
+        
+        if (!allowedPages.includes(currentPage)) {
+            window.location.href = '404.html';
+        }
+    </script>
+</body>
+</html> 

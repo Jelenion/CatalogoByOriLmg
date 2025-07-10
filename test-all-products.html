@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prueba de Todos los Productos - By OriLmg</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .test-section {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .product-test {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .product-test.success {
+            border-color: #27ae60;
+            background-color: #f0f9ff;
+        }
+        
+        .product-test.error {
+            border-color: #e74c3c;
+            background-color: #fdf2f2;
+        }
+        
+        .product-test img {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+        
+        .product-info {
+            flex: 1;
+        }
+        
+        .product-name {
+            font-weight: bold;
+            margin-bottom: 0.25rem;
+        }
+        
+        .product-details {
+            font-size: 0.9rem;
+            color: #666;
+        }
+        
+        .status-badge {
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+        
+        .status-success {
+            background: #27ae60;
+            color: white;
+        }
+        
+        .status-error {
+            background: #e74c3c;
+            color: white;
+        }
+        
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .stat-card {
+            background: #f8f9fa;
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+        
+        .stat-label {
+            color: #666;
+            margin-top: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">
+                    <h1 class="logo-text">By OriLmg</h1>
+                </a>
+            </div>
+            <nav class="nav">
+                <button class="back-btn" onclick="window.location.href='index.html'">
+                    <i class="fas fa-arrow-left"></i> Volver
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Test Section -->
+    <section class="cart-section">
+        <div class="container">
+            <h1 class="cart-title">Prueba de Todos los Productos</h1>
+            
+            <div class="test-section">
+                <h3>Estadísticas</h3>
+                <div class="stats" id="stats">
+                    <!-- Las estadísticas se cargarán dinámicamente -->
+                </div>
+            </div>
+            
+            <div class="test-section">
+                <h3>Productos por Categoría</h3>
+                <div id="productsByCategory">
+                    <!-- Los productos se cargarán dinámicamente -->
+                </div>
+            </div>
+            
+            <div class="test-section">
+                <h3>Resumen de Pruebas</h3>
+                <div id="testSummary">
+                    <!-- El resumen se generará dinámicamente -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Jesus Merlin. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Protección - redirigir inmediatamente a 404
+        window.location.href = '404.html';
+    </script>
+    <script>
+        let testResults = {
+            total: 0,
+            success: 0,
+            error: 0,
+            byCategory: {},
+            byGender: {}
+        };
+        
+        // Función para probar todos los productos
+        function testAllProducts() {
+            testResults = {
+                total: products.length,
+                success: 0,
+                error: 0,
+                byCategory: {},
+                byGender: {}
+            };
+            
+            // Inicializar contadores
+            categories.forEach(category => {
+                testResults.byCategory[category] = { total: 0, success: 0, error: 0 };
+            });
+            
+            ['caballero', 'dama'].forEach(gender => {
+                testResults.byGender[gender] = { total: 0, success: 0, error: 0 };
+            });
+            
+            // Probar cada producto
+            products.forEach(product => {
+                testProduct(product);
+            });
+            
+            // Actualizar estadísticas
+            updateStats();
+            updateProductsByCategory();
+            updateTestSummary();
+        }
+        
+        // Función para probar un producto individual
+        function testProduct(product) {
+            const productDiv = document.createElement('div');
+            productDiv.className = 'product-test';
+            productDiv.id = `product-${product.id}`;
+            
+            const img = document.createElement('img');
+            img.src = product.image;
+            img.alt = product.name;
+            
+            const productInfo = document.createElement('div');
+            productInfo.className = 'product-info';
+            productInfo.innerHTML = `
+                <div class="product-name">${product.name}</div>
+                <div class="product-details">
+                    Categoría: ${product.category} | Género: ${product.gender}<br>
+                    Precio: $${product.price} | ID: ${product.id}<br>
+                    Imagen: ${product.imageCode}
+                </div>
+            `;
+            
+            const statusBadge = document.createElement('div');
+            statusBadge.className = 'status-badge';
+            
+            img.onload = function() {
+                productDiv.classList.add('success');
+                statusBadge.classList.add('status-success');
+                statusBadge.textContent = '✅ Cargada';
+                testResults.success++;
+                testResults.byCategory[product.category].success++;
+                testResults.byGender[product.gender].success++;
+            };
+            
+            img.onerror = function() {
+                productDiv.classList.add('error');
+                statusBadge.classList.add('status-error');
+                statusBadge.textContent = '❌ Error';
+                testResults.error++;
+                testResults.byCategory[product.category].error++;
+                testResults.byGender[product.gender].error++;
+            };
+            
+            // Contar totales
+            testResults.byCategory[product.category].total++;
+            testResults.byGender[product.gender].total++;
+            
+            productDiv.appendChild(img);
+            productDiv.appendChild(productInfo);
+            productDiv.appendChild(statusBadge);
+            
+            return productDiv;
+        }
+        
+        // Función para actualizar estadísticas
+        function updateStats() {
+            const statsDiv = document.getElementById('stats');
+            statsDiv.innerHTML = `
+                <div class="stat-card">
+                    <div class="stat-number">${testResults.total}</div>
+                    <div class="stat-label">Total Productos</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" style="color: #27ae60;">${testResults.success}</div>
+                    <div class="stat-label">Cargados Correctamente</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" style="color: #e74c3c;">${testResults.error}</div>
+                    <div class="stat-label">Con Errores</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" style="color: #f39c12;">${testResults.total > 0 ? Math.round((testResults.success / testResults.total) * 100) : 0}%</div>
+                    <div class="stat-label">Tasa de Éxito</div>
+                </div>
+            `;
+        }
+        
+        // Función para actualizar productos por categoría
+        function updateProductsByCategory() {
+            const container = document.getElementById('productsByCategory');
+            container.innerHTML = '';
+            
+            categories.forEach(category => {
+                const categoryProducts = products.filter(p => p.category === category);
+                const categoryStats = testResults.byCategory[category];
+                
+                const categoryDiv = document.createElement('div');
+                categoryDiv.style.marginBottom = '2rem';
+                categoryDiv.innerHTML = `
+                    <h4 style="color: #2c3e50; margin-bottom: 1rem;">
+                        ${category} (${categoryStats.success}/${categoryStats.total} cargados)
+                    </h4>
+                `;
+                
+                categoryProducts.forEach(product => {
+                    const productDiv = testProduct(product);
+                    categoryDiv.appendChild(productDiv);
+                });
+                
+                container.appendChild(categoryDiv);
+            });
+        }
+        
+        // Función para actualizar resumen de pruebas
+        function updateTestSummary() {
+            const summaryDiv = document.getElementById('testSummary');
+            
+            let summaryHTML = '<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1rem;">';
+            
+            // Resumen por categoría
+            summaryHTML += '<div style="background: #f8f9fa; padding: 1rem; border-radius: 8px;">';
+            summaryHTML += '<h4>Por Categoría</h4>';
+            Object.keys(testResults.byCategory).forEach(category => {
+                const stats = testResults.byCategory[category];
+                const successRate = stats.total > 0 ? Math.round((stats.success / stats.total) * 100) : 0;
+                summaryHTML += `
+                    <div style="margin-bottom: 0.5rem;">
+                        <strong>${category}:</strong> ${stats.success}/${stats.total} (${successRate}%)
+                    </div>
+                `;
+            });
+            summaryHTML += '</div>';
+            
+            // Resumen por género
+            summaryHTML += '<div style="background: #f8f9fa; padding: 1rem; border-radius: 8px;">';
+            summaryHTML += '<h4>Por Género</h4>';
+            Object.keys(testResults.byGender).forEach(gender => {
+                const stats = testResults.byGender[gender];
+                const successRate = stats.total > 0 ? Math.round((stats.success / stats.total) * 100) : 0;
+                summaryHTML += `
+                    <div style="margin-bottom: 0.5rem;">
+                        <strong>${gender}:</strong> ${stats.success}/${stats.total} (${successRate}%)
+                    </div>
+                `;
+            });
+            summaryHTML += '</div>';
+            
+            summaryHTML += '</div>';
+            
+            summaryDiv.innerHTML = summaryHTML;
+        }
+        
+        // Ejecutar pruebas al cargar
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('🚀 Iniciando pruebas de productos...');
+            console.log(`📦 Productos cargados: ${products.length}`);
+            
+            // Esperar un poco para que las imágenes se carguen
+            setTimeout(() => {
+                testAllProducts();
+            }, 1000);
+        });
+    </script>
+</body>
+</html> 

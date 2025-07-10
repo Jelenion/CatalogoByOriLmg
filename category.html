@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Categoría - By OriLmg</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">
+                    <h1 class="logo-text">By OriLmg</h1>
+                </a>
+            </div>
+            <nav class="nav">
+                <button class="back-btn" onclick="window.location.href='index.html'">
+                    <i class="fas fa-arrow-left"></i> Volver
+                </button>
+                <button class="cart-btn" onclick="window.location.href='car.html'">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span id="cartCount" class="cart-count">0</span>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Category Header -->
+    <section class="category-header">
+        <div class="container">
+            <h1 id="categoryTitle" class="category-title">Categoría</h1>
+            <div class="filters">
+                <button class="filter-btn active" data-filter="all">Todos</button>
+                <button class="filter-btn" data-filter="caballero">Caballeros</button>
+                <button class="filter-btn" data-filter="dama">Damas</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Grid -->
+    <section class="products-section">
+        <div class="container">
+            <div class="products-grid" id="productsGrid">
+                <!-- Los productos se cargarán dinámicamente -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Jesus Merlin. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Protección de páginas - solo permitir acceso a páginas principales
+        const allowedPages = ['index.html', 'category.html', 'car.html', ''];
+        const currentPage = window.location.pathname.split('/').pop();
+        
+        if (!allowedPages.includes(currentPage)) {
+            window.location.href = '404.html';
+        }
+    </script>
+</body>
+</html> 

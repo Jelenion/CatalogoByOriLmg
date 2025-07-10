@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diagnóstico de Imágenes - By OriLmg</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .diagnostic-section {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .folder-diagnostic {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .folder-diagnostic h4 {
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+        }
+        
+        .image-test {
+            display: inline-block;
+            margin: 0.5rem;
+            text-align: center;
+        }
+        
+        .image-test img {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 8px;
+            border: 2px solid #ddd;
+        }
+        
+        .image-test.success img {
+            border-color: #27ae60;
+        }
+        
+        .image-test.error img {
+            border-color: #e74c3c;
+        }
+        
+        .image-test .status {
+            font-size: 0.8rem;
+            margin-top: 0.25rem;
+        }
+        
+        .status.success {
+            color: #27ae60;
+        }
+        
+        .status.error {
+            color: #e74c3c;
+        }
+        
+        .console-output {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 1rem;
+            border-radius: 8px;
+            font-family: monospace;
+            font-size: 0.9rem;
+            max-height: 400px;
+            overflow-y: auto;
+            margin-top: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">
+                    <h1 class="logo-text">By OriLmg</h1>
+                </a>
+            </div>
+            <nav class="nav">
+                <button class="back-btn" onclick="window.location.href='index.html'">
+                    <i class="fas fa-arrow-left"></i> Volver
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Diagnostic Section -->
+    <section class="cart-section">
+        <div class="container">
+            <h1 class="cart-title">Diagnóstico de Imágenes</h1>
+            
+            <div class="diagnostic-section">
+                <h3>Verificación de Archivos de Imagen</h3>
+                <p>Esta página verifica qué archivos de imagen existen realmente en cada carpeta.</p>
+                <button onclick="runDiagnostic()" class="cta-btn">
+                    <i class="fas fa-search"></i>
+                    Ejecutar Diagnóstico
+                </button>
+                <div id="diagnosticResults"></div>
+            </div>
+            
+            <div class="diagnostic-section">
+                <h3>Productos Generados</h3>
+                <p>Lista de productos que se están generando actualmente:</p>
+                <div id="productsList"></div>
+            </div>
+            
+            <div class="diagnostic-section">
+                <h3>Consola de Debug</h3>
+                <div id="consoleOutput" class="console-output"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Jesus Merlin. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Protección - redirigir inmediatamente a 404
+        window.location.href = '404.html';
+    </script>
+    <script>
+        // Función para ejecutar diagnóstico
+        function runDiagnostic() {
+            const resultsDiv = document.getElementById('diagnosticResults');
+            const consoleOutput = document.getElementById('consoleOutput');
+            
+            resultsDiv.innerHTML = '';
+            consoleOutput.innerHTML = '';
+            
+            log('🔍 Iniciando diagnóstico de imágenes...');
+            
+            // Verificar cada carpeta
+            Object.keys(folderStructure).forEach(folderName => {
+                const folderInfo = folderStructure[folderName];
+                const folderPath = `src/img/shoes/${folderName}`;
+                
+                log(`📁 Verificando carpeta: ${folderName}`);
+                
+                const folderDiv = document.createElement('div');
+                folderDiv.className = 'folder-diagnostic';
+                folderDiv.innerHTML = `<h4>${folderName} - ${folderInfo.model}</h4>`;
+                
+                // Verificar imágenes esperadas
+                const imageCount = getImageCountForFolder(folderName);
+                let successCount = 0;
+                let errorCount = 0;
+                
+                for (let i = 1; i <= imageCount; i++) {
+                    let imageName;
+                    if (folderName.includes('001')) {
+                        imageName = `${String(i).padStart(6, '0')}.jpg`;
+                    } else if (folderName.includes('002')) {
+                        imageName = `${String(i + 7).padStart(6, '0')}.jpg`;
+                    } else if (folderName.includes('003')) {
+                        imageName = `${String(i + 14).padStart(6, '0')}.jpg`;
+                    } else if (folderName.includes('004')) {
+                        imageName = `${String(i + 21).padStart(6, '0')}.jpg`;
+                    } else if (folderName.includes('005')) {
+                        imageName = `${String(i + 28).padStart(6, '0')}.jpg`;
+                    } else if (folderName.includes('006')) {
+                        imageName = `${String(i + 32).padStart(6, '0')}.jpg`;
+                    } else if (folderName.includes('007')) {
+                        imageName = `${String(i + 36).padStart(6, '0')}.jpg`;
+                    } else if (folderName.includes('008')) {
+                        imageName = `${String(i + 39).padStart(6, '0')}.jpg`;
+                    } else if (folderName.includes('009')) {
+                        imageName = `${String(i + 43).padStart(6, '0')}.jpg`;
+                    } else if (folderName.includes('010')) {
+                        imageName = `${String(i + 47).padStart(6, '0')}.jpg`;
+                    }
+                    
+                    const imagePath = `${folderPath}/${imageName}`;
+                    
+                    const imageTest = document.createElement('div');
+                    imageTest.className = 'image-test';
+                    
+                    const img = document.createElement('img');
+                    img.src = imagePath;
+                    img.alt = imageName;
+                    
+                    const status = document.createElement('div');
+                    status.className = 'status';
+                    
+                    img.onload = function() {
+                        imageTest.classList.add('success');
+                        status.classList.add('success');
+                        status.textContent = '✅ Cargada';
+                        successCount++;
+                        log(`✅ ${imagePath} - CARGADA`);
+                    };
+                    
+                    img.onerror = function() {
+                        imageTest.classList.add('error');
+                        status.classList.add('error');
+                        status.textContent = '❌ No encontrada';
+                        errorCount++;
+                        log(`❌ ${imagePath} - NO ENCONTRADA`);
+                    };
+                    
+                    imageTest.appendChild(img);
+                    imageTest.appendChild(status);
+                    folderDiv.appendChild(imageTest);
+                }
+                
+                // Resumen de la carpeta
+                const summary = document.createElement('div');
+                summary.style.marginTop = '1rem';
+                summary.style.padding = '0.5rem';
+                summary.style.backgroundColor = errorCount > 0 ? '#fdf2f2' : '#f0f9ff';
+                summary.style.borderRadius = '4px';
+                summary.innerHTML = `
+                    <strong>Resumen:</strong> ${successCount} cargadas, ${errorCount} errores
+                    ${errorCount > 0 ? '⚠️ Problemas detectados' : '✅ Todo correcto'}
+                `;
+                folderDiv.appendChild(summary);
+                
+                resultsDiv.appendChild(folderDiv);
+            });
+            
+            // Mostrar productos generados
+            showProductsList();
+            
+            log('✅ Diagnóstico completado');
+        }
+        
+        // Función para mostrar lista de productos
+        function showProductsList() {
+            const productsDiv = document.getElementById('productsList');
+            
+            if (products.length === 0) {
+                productsDiv.innerHTML = '<p>No hay productos cargados aún.</p>';
+                return;
+            }
+            
+            let html = '<div style="max-height: 400px; overflow-y: auto;">';
+            products.forEach((product, index) => {
+                html += `
+                    <div style="border: 1px solid #ddd; padding: 0.5rem; margin-bottom: 0.5rem; border-radius: 4px;">
+                        <strong>${index + 1}.</strong> ${product.name} (${product.category}) - $${product.price}<br>
+                        <small>ID: ${product.id} | Imagen: ${product.imageCode}</small>
+                    </div>
+                `;
+            });
+            html += '</div>';
+            
+            productsDiv.innerHTML = html;
+        }
+        
+        // Función para log
+        function log(message) {
+            const consoleOutput = document.getElementById('consoleOutput');
+            const timestamp = new Date().toLocaleTimeString();
+            consoleOutput.innerHTML += `[${timestamp}] ${message}\n`;
+            consoleOutput.scrollTop = consoleOutput.scrollHeight;
+            console.log(message);
+        }
+        
+        // Ejecutar diagnóstico al cargar
+        document.addEventListener('DOMContentLoaded', function() {
+            log('🚀 Página de diagnóstico cargada');
+            log(`📦 Productos cargados: ${products.length}`);
+            showProductsList();
+        });
+    </script>
+</body>
+</html> 
