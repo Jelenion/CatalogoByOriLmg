@@ -19,7 +19,7 @@
                     <input type="text" id="searchInput" placeholder="Buscar categorías..." class="search-input">
                     <div id="searchDropdown" class="search-dropdown"></div>
                 </div>
-                <button class="cart-btn" onclick="window.location.href='car.html'">
+                <button class="cart-btn" onclick="window.location.href='/car'">
                     <i class="fas fa-shopping-cart"></i>
                     <span id="cartCount" class="cart-count">0</span>
                 </button>
@@ -102,6 +102,10 @@
         
         if (!allowedPages.includes(currentPage)) {
             window.location.href = '404.html';
+        }
+        // Sobrescribir goToCategory para URLs limpias
+        window.goToCategory = function(category) {
+            window.location.href = `/category?category=${encodeURIComponent(category)}`;
         }
     </script>
 </body>

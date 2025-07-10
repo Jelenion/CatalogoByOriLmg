@@ -1,4 +1,8 @@
 {
   "cleanUrls": true,
-  "trailingSlash": false
+  "trailingSlash": false,
+  "rewrites": [
+    { "source": "/car", "destination": "/car.html" },
+    { "source": "/category", "destination": "/category.html" }
+  ]
 } 
