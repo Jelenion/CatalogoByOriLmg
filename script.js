@@ -20,7 +20,7 @@ const folderStructure = {
 
 // Inicializar la aplicación
 // Ahora esperamos a que se cargue shoes-images.json antes de todo
-fetch('shoes-images.json')
+fetch('/shoes-images.json')
     .then(res => res.json())
     .then(data => {
         shoesImages = data;
@@ -46,9 +46,9 @@ fetch('shoes-images.json')
         const currentPage = window.location.pathname.split('/').pop();
         if (currentPage === 'index.html' || currentPage === '' || currentPage === '/') {
             loadFeaturedProducts();
-        } else if (currentPage === 'category.html') {
+        } else if (currentPage === 'category.html' || currentPage === 'category') {
             loadCategoryProducts();
-        } else if (currentPage === 'car.html') {
+        } else if (currentPage === 'car.html' || currentPage === 'car') {
             loadCart();
         }
     });
@@ -104,11 +104,21 @@ function loadFeaturedProducts() {
 function loadCategoryProducts() {
     const urlParams = new URLSearchParams(window.location.search);
     const category = urlParams.get('category');
-    
     if (category) {
         document.getElementById('categoryTitle').textContent = category;
         displayProductsByCategory(category);
+    } else {
+        // Si no hay categoría, mostrar todos los productos
+        document.getElementById('categoryTitle').textContent = 'Todos';
+        displayAllProducts();
     }
+}
+
+// Mostrar todos los productos
+function displayAllProducts() {
+    const productsGrid = document.getElementById('productsGrid');
+    if (!productsGrid) return;
+    productsGrid.innerHTML = products.map(product => createProductCard(product)).join('');
 }
 
 // Mostrar productos por categoría
@@ -129,8 +139,8 @@ function displayProductsByCategory(category, genderFilter = 'all') {
 function createProductCard(product) {
     return `
         <div class="product-card" data-category="${sanitizeHTML(product.category)}" data-gender="${sanitizeHTML(product.gender)}" data-product-id="${sanitizeHTML(product.id)}">
-            <img src="${sanitizeHTML(product.image)}" alt="${sanitizeHTML(product.name)}" class="product-image" 
-                 onerror="this.src='public/placeholder.jpg'">
+            <img src="${sanitizeHTML(product.image).startsWith('/') ? sanitizeHTML(product.image) : '/' + sanitizeHTML(product.image)}" alt="${sanitizeHTML(product.name)}" class="product-image" 
+                 onerror="this.src='/public/placeholder.jpg'">
             <div class="product-info">
                 <h3 class="product-name">${sanitizeHTML(product.name)}</h3>
                 <p class="product-category">${sanitizeHTML(product.category)}</p>
