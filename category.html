@@ -57,14 +57,5 @@
     </footer>
 
     <script src="script.js"></script>
-    <script>
-        // Protección de páginas - solo permitir acceso a páginas principales
-        const allowedPages = ['index.html', 'category.html', 'car.html', ''];
-        const currentPage = window.location.pathname.split('/').pop();
-        
-        if (!allowedPages.includes(currentPage)) {
-            window.location.href = '404.html';
-        }
-    </script>
 </body>
 </html> 
