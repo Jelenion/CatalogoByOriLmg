@@ -23,61 +23,61 @@ const folderStructure = {
     '010 - TRAINNING - Caballero 3er modelo': { category: 'TRAINNING', gender: 'caballero', model: 'Endurance Pro Plus', price: 75 },
     
     // MONTAÑISMO
-    '011 - MONTAÑISIMO - Caballero 1er modelo': { category: 'MONTAÑISMO', gender: 'caballero', model: 'Summit Peak Pro', price: 120 },
-    '012 - MONTAÑISIMO - Caballero 2do modelo': { category: 'MONTAÑISMO', gender: 'caballero', model: 'Alpine Trek Elite', price: 110 },
-    '013 - MONTAÑISIMO - Caballero 3er modelo': { category: 'MONTAÑISMO', gender: 'caballero', model: 'Mountain Master Ultra', price: 130 },
-    '014 - MONTAÑISIMO - Caballero 4to modelo': { category: 'MONTAÑISMO', gender: 'caballero', model: 'Highland Explorer Pro', price: 125 },
-    '015 - MONTAÑISMO - Caballero 5to modelo': { category: 'MONTAÑISMO', gender: 'caballero', model: 'Peak Performance Plus', price: 135 },
+    '011 - MONTAÑISIMO - Caballero 1er modelo': { category: 'MONTAÑISMO', gender: 'caballero', model: 'Summit Peak Pro', price: 94 },
+    '012 - MONTAÑISIMO - Caballero 2do modelo': { category: 'MONTAÑISMO', gender: 'caballero', model: 'Alpine Trek Elite', price: 92 },
+    '013 - MONTAÑISIMO - Caballero 3er modelo': { category: 'MONTAÑISMO', gender: 'caballero', model: 'Mountain Master Ultra', price: 92 },
+    '014 - MONTAÑISIMO - Caballero 4to modelo': { category: 'MONTAÑISMO', gender: 'caballero', model: 'Highland Explorer Pro', price: 75 },
+    '015 - MONTAÑISIMO - Caballero 5to modelo': { category: 'MONTAÑISMO', gender: 'caballero', model: 'Peak Performance Plus', price: 60 },
     
     // SENDERISMO
-    '016 - SENDERISMO - Caballero 1er modelo': { category: 'SENDERISMO', gender: 'caballero', model: 'Trail Blazer Pro', price: 95 },
-    '017 - SENDERISMO - Caballero 2do modelo': { category: 'SENDERISMO', gender: 'caballero', model: 'Hike Master Elite', price: 105 },
-    '018 - SENDERISMO - Caballero 3er modelo': { category: 'SENDERISMO', gender: 'caballero', model: 'Path Finder Ultra', price: 115 },
-    '019 - SENDERISMO - Caballero 4to modelo': { category: 'SENDERISMO', gender: 'caballero', model: 'Adventure Seeker Pro', price: 100 },
-    '020 - SENDERISMO - Dama 1er modelo': { category: 'SENDERISMO', gender: 'dama', model: 'Trail Queen Elite', price: 90 },
-    '021 - SENDERISMO - Dama 2do modelo': { category: 'SENDERISMO', gender: 'dama', model: 'Hike Princess Pro', price: 95 },
-    '022 - SENDERISMO - Dama 3er modelo': { category: 'SENDERISMO', gender: 'dama', model: 'Path Explorer Plus', price: 105 },
-    '023 - SENDERISMO - Dama 4to modelo': { category: 'SENDERISMO', gender: 'dama', model: 'Adventure Queen Ultra', price: 110 },
+    '016 - SENDERISMO - Caballero 1er modelo': { category: 'SENDERISMO', gender: 'caballero', model: 'Trail Blazer Pro', price: 80 },
+    '017 - SENDERISMO - Caballero 2do modelo': { category: 'SENDERISMO', gender: 'caballero', model: 'Hike Master Elite', price: 90 },
+    '018 - SENDERISMO - Caballero 3er modelo': { category: 'SENDERISMO', gender: 'caballero', model: 'Path Finder Ultra', price: 78 },
+    '019 - SENDERISMO - Caballero 4to modelo': { category: 'SENDERISMO', gender: 'caballero', model: 'Adventure Seeker Pro', price: 90 },
+    '020 - SENDERISMO - Dama 1er modelo': { category: 'SENDERISMO', gender: 'dama', model: 'Trail Queen Elite', price: 86 },
+    '021 - SENDERISMO - Dama 2do modelo': { category: 'SENDERISMO', gender: 'dama', model: 'Hike Princess Pro', price: 80 },
+    '022 - SENDERISMO - Dama 3er modelo': { category: 'SENDERISMO', gender: 'dama', model: 'Path Explorer Plus', price: 60 },
+    '023 - SENDERISMO - Dama 4to modelo': { category: 'SENDERISMO', gender: 'dama', model: 'Adventure Queen Ultra', price: 80 },
     
     // CASUAL
-    '024 - CASUAL - Dama 1er modelo': { category: 'CASUAL', gender: 'dama', model: 'Style Comfort Elite', price: 65 },
-    '025 - CASUAL - Dama 2do modelo': { category: 'CASUAL', gender: 'dama', model: 'Urban Walk Pro', price: 70 },
-    '026 - CASUAL - Dama 3er modelo': { category: 'CASUAL', gender: 'dama', model: 'Fashion Step Plus', price: 75 },
-    '027 - CASUAL - Caballero 1er modelo': { category: 'CASUAL', gender: 'caballero', model: 'Street Style Elite', price: 70 },
+    '024 - CASUAL - Dama 1er modelo': { category: 'CASUAL', gender: 'dama', model: 'Style Comfort Elite', price: 60 },
+    '025 - CASUAL - Dama 2do modelo': { category: 'CASUAL', gender: 'dama', model: 'Urban Walk Pro', price: 60 },
+    '026 - CASUAL - Dama 3er modelo': { category: 'CASUAL', gender: 'dama', model: 'Fashion Step Plus', price: 60 },
+    '027 - CASUAL - Caballero 1er modelo': { category: 'CASUAL', gender: 'caballero', model: 'Street Style Elite', price: 65 },
     '028 - CASUAL - Caballero 2do modelo': { category: 'CASUAL', gender: 'caballero', model: 'Urban Comfort Pro', price: 75 },
-    '029 -  CASUAL - Caballero 3er modelo': { category: 'CASUAL', gender: 'caballero', model: 'Fashion Walker Plus', price: 80 },
+    '029 -  CASUAL - Caballero 3er modelo': { category: 'CASUAL', gender: 'caballero', model: 'Fashion Walker Plus', price: 59 },
     
     // FUTBOL SALA
-    '030 - FUTBOL SALA - Caballero 1er modelo': { category: 'FUTBOL SALA', gender: 'caballero', model: 'Indoor Master Pro', price: 85 },
-    '031 - FUTBOL SALA- Caballero 2do modelo': { category: 'FUTBOL SALA', gender: 'caballero', model: 'Court Control Elite', price: 90 },
-    '032 - FUTBOL SALA - Caballero 3er modelo': { category: 'FUTBOL SALA', gender: 'caballero', model: 'Indoor Warrior Plus', price: 95 },
+    '030 - FUTBOL SALA - Caballero 1er modelo': { category: 'FUTBOL SALA', gender: 'caballero', model: 'Indoor Master Pro', price: 60 },
+    '031 - FUTBOL SALA- Caballero 2do modelo': { category: 'FUTBOL SALA', gender: 'caballero', model: 'Court Control Elite', price: 60 },
+    '032 - FUTBOL SALA - Caballero 3er modelo': { category: 'FUTBOL SALA', gender: 'caballero', model: 'Indoor Warrior Plus', price: 70 },
     
     // FUTBOL
-    '033 - FUTBOL - Caballero 1er modelo': { category: 'FUTBOL', gender: 'caballero', model: 'Field Master Pro', price: 100 },
-    '034 - FUTBOL - Caballero 2do modelo': { category: 'FUTBOL', gender: 'caballero', model: 'Soccer Elite Ultra', price: 110 },
+    '033 - FUTBOL - Caballero 1er modelo': { category: 'FUTBOL', gender: 'caballero', model: 'Field Master Pro', price: 60 },
+    '034 - FUTBOL - Caballero 2do modelo': { category: 'FUTBOL', gender: 'caballero', model: 'Soccer Elite Ultra', price: 60 },
     
     // FUTBOL JUAN ARANGO
-    '035 - FUTBOL JUAN ARANGO - Caballero 1er modelo': { category: 'FUTBOL JUAN ARANGO', gender: 'caballero', model: 'Juan Arango Pro', price: 120 },
+    '035 - FUTBOL JUAN ARANGO - Caballero 1er modelo': { category: 'FUTBOL JUAN ARANGO', gender: 'caballero', model: 'Juan Arango Pro', price: 85 },
     
     // RUNNING
-    '036 - RUNNING - Caballero 1er modelo': { category: 'RUNNING', gender: 'caballero', model: 'Speed Master Elite', price: 95 },
-    '037 - RUNNING - Caballero 2do modelo': { category: 'RUNNING', gender: 'caballero', model: 'Marathon Pro Plus', price: 105 },
-    '038 - RUNNING - Caballero 3er modelo': { category: 'RUNNING', gender: 'caballero', model: 'Endurance Runner Ultra', price: 115 },
-    '039 - RUNNING - Caballero 4to modelo': { category: 'RUNNING', gender: 'caballero', model: 'Track Master Pro', price: 100 },
-    '040 - RUNNING - Caballero 5to modelo': { category: 'RUNNING', gender: 'caballero', model: 'Speed Demon Elite', price: 110 },
-    '041 - RUNNING - Caballero 6to modelo': { category: 'RUNNING', gender: 'caballero', model: 'Road Warrior Plus', price: 120 },
-    '042 - RUNNING - Caballero 7mo modelo': { category: 'RUNNING', gender: 'caballero', model: 'Velocity Master Ultra', price: 125 },
-    '043 - RUNNING - Caballero 8vo modelo': { category: 'RUNNING', gender: 'caballero', model: 'Sprint Elite Pro', price: 115 },
-    '044 - RUNNING - Caballero 9no modelo': { category: 'RUNNING', gender: 'caballero', model: 'Distance Runner Plus', price: 130 },
-    '045 - RUNNING - Dama 1er modelo': { category: 'RUNNING', gender: 'dama', model: 'Speed Queen Elite', price: 90 },
-    '046 - RUNNING - Dama 2do modelo': { category: 'RUNNING', gender: 'dama', model: 'Marathon Princess Pro', price: 100 },
-    '047 - RUNNING - Dama 3er modelo': { category: 'RUNNING', gender: 'dama', model: 'Endurance Queen Ultra', price: 110 },
-    '048 - RUNNING - Dama 4to modelo': { category: 'RUNNING', gender: 'dama', model: 'Track Queen Pro', price: 95 },
-    '049 - RUNNING - Dama 5to modelo': { category: 'RUNNING', gender: 'dama', model: 'Speed Goddess Elite', price: 105 },
-    '050 - RUNNING - Dama 6to modelo': { category: 'RUNNING', gender: 'dama', model: 'Road Queen Plus', price: 115 },
-    '051 - RUNNING - Dama 7mo modelo': { category: 'RUNNING', gender: 'dama', model: 'Velocity Queen Ultra', price: 120 },
-    '052 - RUNNING - Dama 8vo modelo': { category: 'RUNNING', gender: 'dama', model: 'Sprint Queen Pro', price: 110 },
-    '053 - RUNNING - Dama 9no modelo': { category: 'RUNNING', gender: 'dama', model: 'Distance Queen Plus', price: 125 }
+    '036 - RUNNING - Caballero 1er modelo': { category: 'RUNNING', gender: 'caballero', model: 'Speed Master Elite', price: 75 },
+    '037 - RUNNING - Caballero 2do modelo': { category: 'RUNNING', gender: 'caballero', model: 'Marathon Pro Plus', price: 75 },
+    '038 - RUNNING - Caballero 3er modelo': { category: 'RUNNING', gender: 'caballero', model: 'Endurance Runner Ultra', price: 72 },
+    '039 - RUNNING - Caballero 4to modelo': { category: 'RUNNING', gender: 'caballero', model: 'Track Master Pro', price: 65 },
+    '040 - RUNNING - Caballero 5to modelo': { category: 'RUNNING', gender: 'caballero', model: 'Speed Demon Elite', price: 80 },
+    '041 - RUNNING - Caballero 6to modelo': { category: 'RUNNING', gender: 'caballero', model: 'Road Warrior Plus', price: 75 },
+    '042 - RUNNING - Caballero 7mo modelo': { category: 'RUNNING', gender: 'caballero', model: 'Velocity Master Ultra', price: 92 },
+    '043 - RUNNING - Caballero 8vo modelo': { category: 'RUNNING', gender: 'caballero', model: 'Sprint Elite Pro', price: 80 },
+    '044 - RUNNING - Caballero 9no modelo': { category: 'RUNNING', gender: 'caballero', model: 'Distance Runner Plus', price: 55 },
+    '045 - RUNNING - Dama 1er modelo': { category: 'RUNNING', gender: 'dama', model: 'Speed Queen Elite', price: 75 },
+    '046 - RUNNING - Dama 2do modelo': { category: 'RUNNING', gender: 'dama', model: 'Marathon Princess Pro', price: 85 },
+    '047 - RUNNING - Dama 3er modelo': { category: 'RUNNING', gender: 'dama', model: 'Endurance Queen Ultra', price: 75 },
+    '048 - RUNNING - Dama 4to modelo': { category: 'RUNNING', gender: 'dama', model: 'Track Queen Pro', price: 58 },
+    '049 - RUNNING - Dama 5to modelo': { category: 'RUNNING', gender: 'dama', model: 'Speed Goddess Elite', price: 60 },
+    '050 - RUNNING - Dama 6to modelo': { category: 'RUNNING', gender: 'dama', model: 'Road Queen Plus', price: 82 },
+    '051 - RUNNING - Dama 7mo modelo': { category: 'RUNNING', gender: 'dama', model: 'Velocity Queen Ultra', price: 90 },
+    '052 - RUNNING - Dama 8vo modelo': { category: 'RUNNING', gender: 'dama', model: 'Sprint Queen Pro', price: 70 },
+    '053 - RUNNING - Dama 9no modelo': { category: 'RUNNING', gender: 'dama', model: 'Distance Queen Plus', price: 85 }
 };
 
 // Inicializar la aplicación
