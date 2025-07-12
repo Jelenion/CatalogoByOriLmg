@@ -1,21 +1,83 @@
 // Datos de la aplicación
 let products = [];
 let cart = JSON.parse(localStorage.getItem('cart')) || [];
-let categories = ['PADEL', 'BASKET', 'TRAINNING'];
+let categories = ['PADEL', 'BASKET', 'TRAINNING', 'MONTAÑISMO', 'SENDERISMO', 'CASUAL', 'FUTBOL', 'FUTBOL SALA', 'FUTBOL JUAN ARANGO', 'RUNNING'];
 let shoesImages = {};
 
 // Estructura de carpetas y precios con nombres únicos
 const folderStructure = {
+    // PADEL
     '001 - PADEL - Tennis caballero': { category: 'PADEL', gender: 'caballero', model: 'Ace Pro Elite', price: 85 },
     '002 - PADEL - Tennis dama 1er modelo': { category: 'PADEL', gender: 'dama', model: 'Smash Elite Pro', price: 85 },
     '003 - PADEL - Tennis dama 2do modelo': { category: 'PADEL', gender: 'dama', model: 'Court Queen Supreme', price: 70 },
+    
+    // BASKET
     '004 -  BASKET - caballeros': { category: 'BASKET', gender: 'caballero', model: 'Dunk Master Pro', price: 95 },
+    
+    // TRAINNING
     '005 - TRAINNING - Damas 1er modelo': { category: 'TRAINNING', gender: 'dama', model: 'Fit Flow Active', price: 70 },
     '006 - TRAINNING - Damas 2do modelo': { category: 'TRAINNING', gender: 'dama', model: 'Power Step Plus', price: 70 },
     '007 - TRAINNING - Damas 3er modelo': { category: 'TRAINNING', gender: 'dama', model: 'Energy Boost Max', price: 89 },
     '008 - TRAINNING - Caballero 1er modelo': { category: 'TRAINNING', gender: 'caballero', model: 'Force Flex Ultra', price: 75 },
     '009 - TRAINNING - Caballero 2do modelo': { category: 'TRAINNING', gender: 'caballero', model: 'Power Max Elite', price: 85 },
-    '010 - TRAINNING - Caballero 3er modelo': { category: 'TRAINNING', gender: 'caballero', model: 'Endurance Pro Plus', price: 75 }
+    '010 - TRAINNING - Caballero 3er modelo': { category: 'TRAINNING', gender: 'caballero', model: 'Endurance Pro Plus', price: 75 },
+    
+    // MONTAÑISMO
+    '011 - MONTAÑISIMO - Caballero 1er modelo': { category: 'MONTAÑISMO', gender: 'caballero', model: 'Summit Peak Pro', price: 120 },
+    '012 - MONTAÑISIMO - Caballero 2do modelo': { category: 'MONTAÑISMO', gender: 'caballero', model: 'Alpine Trek Elite', price: 110 },
+    '013 - MONTAÑISIMO - Caballero 3er modelo': { category: 'MONTAÑISMO', gender: 'caballero', model: 'Mountain Master Ultra', price: 130 },
+    '014 - MONTAÑISIMO - Caballero 4to modelo': { category: 'MONTAÑISMO', gender: 'caballero', model: 'Highland Explorer Pro', price: 125 },
+    '015 - MONTAÑISMO - Caballero 5to modelo': { category: 'MONTAÑISMO', gender: 'caballero', model: 'Peak Performance Plus', price: 135 },
+    
+    // SENDERISMO
+    '016 - SENDERISMO - Caballero 1er modelo': { category: 'SENDERISMO', gender: 'caballero', model: 'Trail Blazer Pro', price: 95 },
+    '017 - SENDERISMO - Caballero 2do modelo': { category: 'SENDERISMO', gender: 'caballero', model: 'Hike Master Elite', price: 105 },
+    '018 - SENDERISMO - Caballero 3er modelo': { category: 'SENDERISMO', gender: 'caballero', model: 'Path Finder Ultra', price: 115 },
+    '019 - SENDERISMO - Caballero 4to modelo': { category: 'SENDERISMO', gender: 'caballero', model: 'Adventure Seeker Pro', price: 100 },
+    '020 - SENDERISMO - Dama 1er modelo': { category: 'SENDERISMO', gender: 'dama', model: 'Trail Queen Elite', price: 90 },
+    '021 - SENDERISMO - Dama 2do modelo': { category: 'SENDERISMO', gender: 'dama', model: 'Hike Princess Pro', price: 95 },
+    '022 - SENDERISMO - Dama 3er modelo': { category: 'SENDERISMO', gender: 'dama', model: 'Path Explorer Plus', price: 105 },
+    '023 - SENDERISMO - Dama 4to modelo': { category: 'SENDERISMO', gender: 'dama', model: 'Adventure Queen Ultra', price: 110 },
+    
+    // CASUAL
+    '024 - CASUAL - Dama 1er modelo': { category: 'CASUAL', gender: 'dama', model: 'Style Comfort Elite', price: 65 },
+    '025 - CASUAL - Dama 2do modelo': { category: 'CASUAL', gender: 'dama', model: 'Urban Walk Pro', price: 70 },
+    '026 - CASUAL - Dama 3er modelo': { category: 'CASUAL', gender: 'dama', model: 'Fashion Step Plus', price: 75 },
+    '027 - CASUAL - Caballero 1er modelo': { category: 'CASUAL', gender: 'caballero', model: 'Street Style Elite', price: 70 },
+    '028 - CASUAL - Caballero 2do modelo': { category: 'CASUAL', gender: 'caballero', model: 'Urban Comfort Pro', price: 75 },
+    '029 -  CASUAL - Caballero 3er modelo': { category: 'CASUAL', gender: 'caballero', model: 'Fashion Walker Plus', price: 80 },
+    
+    // FUTBOL SALA
+    '030 - FUTBOL SALA - Caballero 1er modelo': { category: 'FUTBOL SALA', gender: 'caballero', model: 'Indoor Master Pro', price: 85 },
+    '031 - FUTBOL SALA- Caballero 2do modelo': { category: 'FUTBOL SALA', gender: 'caballero', model: 'Court Control Elite', price: 90 },
+    '032 - FUTBOL SALA - Caballero 3er modelo': { category: 'FUTBOL SALA', gender: 'caballero', model: 'Indoor Warrior Plus', price: 95 },
+    
+    // FUTBOL
+    '033 - FUTBOL - Caballero 1er modelo': { category: 'FUTBOL', gender: 'caballero', model: 'Field Master Pro', price: 100 },
+    '034 - FUTBOL - Caballero 2do modelo': { category: 'FUTBOL', gender: 'caballero', model: 'Soccer Elite Ultra', price: 110 },
+    
+    // FUTBOL JUAN ARANGO
+    '035 - FUTBOL JUAN ARANGO - Caballero 1er modelo': { category: 'FUTBOL JUAN ARANGO', gender: 'caballero', model: 'Juan Arango Pro', price: 120 },
+    
+    // RUNNING
+    '036 - RUNNING - Caballero 1er modelo': { category: 'RUNNING', gender: 'caballero', model: 'Speed Master Elite', price: 95 },
+    '037 - RUNNING - Caballero 2do modelo': { category: 'RUNNING', gender: 'caballero', model: 'Marathon Pro Plus', price: 105 },
+    '038 - RUNNING - Caballero 3er modelo': { category: 'RUNNING', gender: 'caballero', model: 'Endurance Runner Ultra', price: 115 },
+    '039 - RUNNING - Caballero 4to modelo': { category: 'RUNNING', gender: 'caballero', model: 'Track Master Pro', price: 100 },
+    '040 - RUNNING - Caballero 5to modelo': { category: 'RUNNING', gender: 'caballero', model: 'Speed Demon Elite', price: 110 },
+    '041 - RUNNING - Caballero 6to modelo': { category: 'RUNNING', gender: 'caballero', model: 'Road Warrior Plus', price: 120 },
+    '042 - RUNNING - Caballero 7mo modelo': { category: 'RUNNING', gender: 'caballero', model: 'Velocity Master Ultra', price: 125 },
+    '043 - RUNNING - Caballero 8vo modelo': { category: 'RUNNING', gender: 'caballero', model: 'Sprint Elite Pro', price: 115 },
+    '044 - RUNNING - Caballero 9no modelo': { category: 'RUNNING', gender: 'caballero', model: 'Distance Runner Plus', price: 130 },
+    '045 - RUNNING - Dama 1er modelo': { category: 'RUNNING', gender: 'dama', model: 'Speed Queen Elite', price: 90 },
+    '046 - RUNNING - Dama 2do modelo': { category: 'RUNNING', gender: 'dama', model: 'Marathon Princess Pro', price: 100 },
+    '047 - RUNNING - Dama 3er modelo': { category: 'RUNNING', gender: 'dama', model: 'Endurance Queen Ultra', price: 110 },
+    '048 - RUNNING - Dama 4to modelo': { category: 'RUNNING', gender: 'dama', model: 'Track Queen Pro', price: 95 },
+    '049 - RUNNING - Dama 5to modelo': { category: 'RUNNING', gender: 'dama', model: 'Speed Goddess Elite', price: 105 },
+    '050 - RUNNING - Dama 6to modelo': { category: 'RUNNING', gender: 'dama', model: 'Road Queen Plus', price: 115 },
+    '051 - RUNNING - Dama 7mo modelo': { category: 'RUNNING', gender: 'dama', model: 'Velocity Queen Ultra', price: 120 },
+    '052 - RUNNING - Dama 8vo modelo': { category: 'RUNNING', gender: 'dama', model: 'Sprint Queen Pro', price: 110 },
+    '053 - RUNNING - Dama 9no modelo': { category: 'RUNNING', gender: 'dama', model: 'Distance Queen Plus', price: 125 }
 };
 
 // Inicializar la aplicación
@@ -240,7 +302,7 @@ function handleSearch(e) {
             <div class="search-no-results">
                 <i class="fas fa-search"></i>
                 <p>No se encontraron resultados para "${query}"</p>
-                <p class="search-suggestions">Intenta buscar: PADEL, BASKET, TRAINNING, Caballero, Dama</p>
+                <p class="search-suggestions">Intenta buscar: PADEL, BASKET, TRAINNING, MONTAÑISMO, SENDERISMO, CASUAL, FUTBOL, RUNNING, Caballero, Dama</p>
             </div>
         `;
         dropdown.classList.add('show');
@@ -268,11 +330,15 @@ function showSearchDropdown() {
                 <div class="search-section-title">Sugerencias de búsqueda</div>
                 <div class="search-item suggestion-item">
                     <i class="fas fa-lightbulb"></i>
-                    <span>Escribe "padel", "basket", "training"</span>
+                    <span>Escribe "padel", "basket", "training", "running"</span>
                 </div>
                 <div class="search-item suggestion-item">
                     <i class="fas fa-lightbulb"></i>
                     <span>Busca por "caballero" o "dama"</span>
+                </div>
+                <div class="search-item suggestion-item">
+                    <i class="fas fa-lightbulb"></i>
+                    <span>Prueba "montaña", "senderismo", "casual", "fútbol"</span>
                 </div>
             </div>
         `;
@@ -293,14 +359,14 @@ function hideSearchDropdown(e) {
 
 // Ir a categoría
 function goToCategory(category) {
-    window.location.href = `category.html?category=${encodeURIComponent(category)}`;
+    window.location.href = `/category?category=${encodeURIComponent(category)}`;
 }
 
 // Ir a producto específico
 function goToProduct(productId) {
     const product = products.find(p => p.id === productId);
     if (product) {
-        window.location.href = `category.html?category=${encodeURIComponent(product.category)}`;
+        window.location.href = `/category?category=${encodeURIComponent(product.category)}`;
     }
 }
 

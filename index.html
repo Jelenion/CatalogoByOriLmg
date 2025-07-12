@@ -41,7 +41,7 @@
         <div class="container">
             <div class="hero-content">
                 <h1 class="hero-title">Encuentra tu estilo deportivo</h1>
-                <p class="hero-subtitle">La mejor selección de zapatos para padel, basket y training</p>
+                <p class="hero-subtitle">La mejor selección de zapatos deportivos para todas las disciplinas</p>
                 <button class="cta-btn" onclick="scrollToProducts()">Ver Productos</button>
             </div>
         </div>
@@ -83,6 +83,55 @@
                     <h3>TRAINNING</h3>
                     <p>Zapatos para entrenamiento</p>
                 </div>
+                <div class="category-card" onclick="goToCategory('MONTAÑISMO')">
+                    <div class="category-icon">
+                        <i class="fas fa-mountain"></i>
+                    </div>
+                    <h3>MONTAÑISMO</h3>
+                    <p>Zapatos para montaña</p>
+                </div>
+                <div class="category-card" onclick="goToCategory('SENDERISMO')">
+                    <div class="category-icon">
+                        <i class="fas fa-hiking"></i>
+                    </div>
+                    <h3>SENDERISMO</h3>
+                    <p>Zapatos para senderismo</p>
+                </div>
+                <div class="category-card" onclick="goToCategory('CASUAL')">
+                    <div class="category-icon">
+                        <i class="fas fa-walking"></i>
+                    </div>
+                    <h3>CASUAL</h3>
+                    <p>Zapatos casuales</p>
+                </div>
+                <div class="category-card" onclick="goToCategory('FUTBOL SALA')">
+                    <div class="category-icon">
+                        <i class="fas fa-futbol"></i>
+                    </div>
+                    <h3>FUTBOL SALA</h3>
+                    <p>Zapatos para fútbol sala</p>
+                </div>
+                <div class="category-card" onclick="goToCategory('FUTBOL')">
+                    <div class="category-icon">
+                        <i class="fas fa-futbol"></i>
+                    </div>
+                    <h3>FUTBOL</h3>
+                    <p>Zapatos para fútbol</p>
+                </div>
+                <div class="category-card" onclick="goToCategory('FUTBOL JUAN ARANGO')">
+                    <div class="category-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h3>FUTBOL JUAN ARANGO</h3>
+                    <p>Zapatos especiales Juan Arango</p>
+                </div>
+                <div class="category-card" onclick="goToCategory('RUNNING')">
+                    <div class="category-icon">
+                        <i class="fas fa-running"></i>
+                    </div>
+                    <h3>RUNNING</h3>
+                    <p>Zapatos para correr</p>
+                </div>
             </div>
         </div>
     </section>
@@ -95,11 +144,5 @@
     </footer>
 
     <script src="script.js"></script>
-    <script>
-        // Sobrescribir goToCategory para URLs limpias
-        window.goToCategory = function(category) {
-            window.location.href = `/category?category=${encodeURIComponent(category)}`;
-        }
-    </script>
 </body>
 </html> 

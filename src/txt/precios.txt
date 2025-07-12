@@ -8,3 +8,46 @@ TRAINNING - Damas 3er modelo - 89$
 TRAINNING - Caballero 1er modelo - 75$
 TRAINNING - Caballero 2do modelo - 85$
 TRAINNING - Caballero 3er modelo - 75$
+MONTAÑISMO - Caballero 1er modelo - 94$
+MONTAÑISMO - Caballero 2do modelo - 92$
+MONTAÑISMO - Caballero 3er modelo - 92$
+MONTAÑISMO - Caballero 4to modelo - 75$
+MONTAÑISMO - Caballero 5to modelo - 60$
+SENDERISMO - Caballero 1er modelo - 80$
+SENDERISMO - Caballero 2do modelo - 90$
+SENDERISMO - Caballero 3er modelo - 78$
+SENDERISMO - Caballero 4to modelo - 90$
+SENDERISMO - Dama 1er modelo - 86$
+SENDERISMO - Dama 2do modelo - 80$
+SENDERISMO - Dama 3er modelo - 60$
+SENDERISMO - Dama 4to modelo - 80$
+CASUAL - Dama 1er modelo - 60$
+CASUAL - Dama 2do modelo - 60$
+CASUAL - Dama 3er modelo - 60$
+CASUAL - Caballero 1er modelo - 65$
+CASUAL - Caballero 2do modelo - 75$
+CASUAL - Caballero 3er modelo - 59$
+FUTBOL - Caballero 1er modelo - 60$
+FUTBOL - Caballero 2do modelo - 60$
+FUTBOL SALA - Caballero 1er modelo - 60$
+FUTBOL SALA - Caballero 2do modelo - 60$
+FUTBOL SALA - Caballero 3er modelo - 70$
+FUTBOL JUAN ARANGO - Caballero 1er modelo - 85$
+RUNNING - Caballero 1er modelo - 75$
+RUNNING - Caballero 2do modelo - 75$
+RUNNING - Caballero 3er modelo - 72$
+RUNNING - Caballero 4to modelo - 65$
+RUNNING - Caballero 5to modelo - 80$
+RUNNING - Caballero 6to modelo - 75$
+RUNNING - Caballero 7mo modelo - 92$
+RUNNING - Caballero 8vo modelo - 80$
+RUNNING - Caballero 9no modelo - 55$
+RUNNING - Dama 1er modelo - 75$
+RUNNING - Dama 2do modelo - 85$
+RUNNING - Dama 3er modelo - 75$
+RUNNING - Dama 4to modelo - 58$
+RUNNING - Dama 5to modelo - 60$
+RUNNING - Dama 6to modelo - 82$
+RUNNING - Dama 7mo modelo - 90$
+RUNNING - Dama 8vo modelo - 70$
+RUNNING - Dama 9no modelo - 85$
