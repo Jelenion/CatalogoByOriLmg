@@ -232,11 +232,13 @@ function handleSearch(e) {
         category.toLowerCase().includes(query)
     );
     
-    // Buscar en productos también
+    // Buscar en productos también (ahora incluye búsqueda por id y imageCode)
     const filteredProducts = products.filter(product => 
         product.name.toLowerCase().includes(query) ||
         product.category.toLowerCase().includes(query) ||
-        product.gender.toLowerCase().includes(query)
+        product.gender.toLowerCase().includes(query) ||
+        product.id.toLowerCase().includes(query) ||
+        (product.imageCode && product.imageCode.toLowerCase().includes(query))
     );
     
     // Crear resultados combinados
@@ -290,6 +292,7 @@ function handleSearch(e) {
                             <div class="search-item-info">
                                 <div class="search-item-name">${sanitizeHTML(item.name)}</div>
                                 <div class="search-item-price">$${sanitizeHTML(item.price.toString())}</div>
+                                <div class="search-item-code">ID: ${sanitizeHTML(item.id)} | Código: ${sanitizeHTML(item.imageCode)}</div>
                             </div>
                         </div>`;
                     }
@@ -302,7 +305,7 @@ function handleSearch(e) {
             <div class="search-no-results">
                 <i class="fas fa-search"></i>
                 <p>No se encontraron resultados para "${query}"</p>
-                <p class="search-suggestions">Intenta buscar: PADEL, BASKET, TRAINNING, MONTAÑISMO, SENDERISMO, CASUAL, FUTBOL, RUNNING, Caballero, Dama</p>
+                <p class="search-suggestions">Intenta buscar: PADEL, BASKET, TRAINNING, MONTAÑISMO, SENDERISMO, CASUAL, FUTBOL, RUNNING, Caballero, Dama, un ID o un código de zapato</p>
             </div>
         `;
         dropdown.classList.add('show');
